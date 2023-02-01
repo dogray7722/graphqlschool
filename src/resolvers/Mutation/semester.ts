@@ -30,7 +30,6 @@ export const semesterResolvers = {
         semester: null,
       };
     }
-    console.log(season);
 
     let seasonCode;
     switch (season) {
@@ -46,11 +45,6 @@ export const semesterResolvers = {
       case SEASON.WINTER:
         seasonCode = 3;
         break;
-      // default:
-      //   return {
-      //     userErrors: [{ message: "Season value invalid." }],
-      //     semester: null,
-      //   };
     }
 
     return {
