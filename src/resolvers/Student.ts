@@ -5,8 +5,9 @@ interface StudentParentType {
 }
 
 export enum STATUS {
-  ENROLLED = "enrolled",
-  UNENROLLED = "unenrolled",
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+  ALUMNUS = "alumnus",
 }
 
 export const Student = {

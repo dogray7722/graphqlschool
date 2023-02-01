@@ -37,7 +37,7 @@ export const studentResolvers = {
 
     let studentStatus = status;
     if (!studentStatus) {
-      studentStatus = STATUS.UNENROLLED;
+      studentStatus = STATUS.INACTIVE;
     }
 
     return {

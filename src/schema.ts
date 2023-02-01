@@ -47,8 +47,9 @@ export const typeDefs = gql`
   }
 
   enum STATUS {
-    enrolled
-    unenrolled
+    active
+    inactive
+    alumnus
   }
 
   enum SEASON {
@@ -91,14 +92,14 @@ export const typeDefs = gql`
     id: ID!
     name: String!
     description: String!
-    startDate: String
-    endDate: String
-    courseDays: String
-    startTime: String
-    duration: String
-    semester: Semester
-    instructor: Instructor
-    subject: Subject
+    startDate: String!
+    endDate: String!
+    courseDays: String!
+    startTime: String!
+    duration: String!
+    semester: Semester!
+    instructor: Instructor!
+    subject: Subject!
     seats: Int!
   }
 
