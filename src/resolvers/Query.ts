@@ -1,6 +1,12 @@
 import { Context } from "..";
 import { STATUS } from "./Student";
-import { SEASON } from "./Semester";
+import { getFutureSemesters } from "./Semester";
+
+interface CourseFilters {
+  instructorId: string;
+  subjectId: string;
+  semesterId: string;
+}
 
 export const Query = {
   address: (_: any, { id }: { id: string }, { prisma }: Context) => {
@@ -20,8 +26,22 @@ export const Query = {
       },
     });
   },
-  courses: (_: any, __: any, { prisma }: Context) => {
-    return prisma.course.findMany();
+  courses: async (
+    _: any,
+    { filters }: { filters: CourseFilters },
+    { prisma }: Context
+  ) => {
+    let where: any = {};
+
+    if (filters) {
+      const { instructorId, subjectId, semesterId } = filters;
+
+      if (instructorId) where.instructorId = Number(instructorId);
+      if (subjectId) where.subjectId = Number(subjectId);
+      if (semesterId) where.semesterId = Number(semesterId);
+    }
+
+    return prisma.course.findMany({ where });
   },
   instructor: (_: any, { id }: { id: string }, { prisma }: Context) => {
     return prisma.instructor.findUnique({
@@ -40,7 +60,7 @@ export const Query = {
       },
     });
   },
-  semesters: (
+  semesters: async (
     _: any,
     { futureOnly }: { futureOnly: Boolean },
     { prisma }: Context
@@ -49,97 +69,24 @@ export const Query = {
       const today = new Date();
       const thisYear = today.getFullYear();
       const month = today.getMonth();
-      switch (month) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-          return prisma.semester.findMany({
-            where: {
-              year: { gte: thisYear },
-            },
-            orderBy: [
-              {
-                year: "asc",
-              },
-              {
-                seasonCode: "asc",
-              },
-            ],
-          });
-        case 5:
-        case 6:
-        case 7:
-          return prisma.semester.findMany({
-            where: {
-              OR: [
-                { year: { gt: thisYear } },
-
-                { season: SEASON.SUMMER || SEASON.FALL || SEASON.WINTER } && {
-                  year: thisYear,
-                },
-              ],
-            },
-            orderBy: [
-              {
-                year: "asc",
-              },
-              {
-                seasonCode: "asc",
-              },
-            ],
-          });
-        case 8:
-        case 9:
-        case 10:
-          return prisma.semester.findMany({
-            where: {
-              OR: [
-                { year: { gt: thisYear } },
-
-                { season: SEASON.FALL || SEASON.WINTER } && { year: thisYear },
-              ],
-            },
-            orderBy: [
-              {
-                year: "asc",
-              },
-              {
-                seasonCode: "asc",
-              },
-            ],
-          });
-        case 11:
-          return prisma.semester.findMany({
-            where: {
-              OR: [
-                { year: { gt: thisYear } },
-
-                { season: SEASON.WINTER } && { year: thisYear },
-              ],
-            },
-            orderBy: [
-              {
-                year: "asc",
-              },
-              {
-                seasonCode: "asc",
-              },
-            ],
-          });
-      }
+      let futureSemesters = getFutureSemesters(month);
+      return prisma.semester.findMany({
+        where: {
+          OR: [
+            { year: { gt: thisYear } },
+            { year: thisYear, season: { in: futureSemesters } },
+          ],
+        },
+        orderBy: [
+          {
+            year: "asc",
+          },
+          {
+            seasonCode: "asc",
+          },
+        ],
+      });
     }
-    return prisma.semester.findMany({
-      orderBy: [
-        {
-          year: "asc",
-        },
-        {
-          seasonCode: "asc",
-        },
-      ],
-    });
   },
   subject: (_: any, { id }: { id: string }, { prisma }: Context) => {
     return prisma.subject.findUnique({

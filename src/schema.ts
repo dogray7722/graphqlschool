@@ -5,7 +5,7 @@ export const typeDefs = gql`
     addresses: [Address]
     address(id: ID!): Address
 
-    courses: [Course]
+    courses(filters: CourseFilters): [Course]
     course(id: ID!): Course
 
     instructor(id: ID!): Instructor
@@ -101,6 +101,12 @@ export const typeDefs = gql`
     instructor: Instructor!
     subject: Subject!
     seats: Int!
+  }
+
+  input CourseFilters {
+    instructorId: ID
+    subjectId: ID
+    semesterId: ID
   }
 
   input CourseInput {
