@@ -41,6 +41,9 @@ export const typeDefs = gql`
     semesterCreate(semester: SemesterInput!): SemesterPayload!
 
     studentCreate(student: StudentInput!): StudentPayload!
+    studentUpdate(studentId: ID!, student: StudentInput!): StudentPayload!
+    studentEnroll(studentId: ID!, courseId: ID!): EnrollStudentPayload!
+    studentUnenroll(studentId: ID!, courseId: ID!): EnrollStudentPayload!
 
     subjectCreate(subject: SubjectInput!): SubjectPayload!
     subjectUpdate(subId: ID!, subject: SubjectInput!): SubjectPayload!
@@ -205,6 +208,11 @@ export const typeDefs = gql`
   type AssignSubjectPayload {
     userErrors: [UserError]
     assigned: Boolean
+  }
+
+  type EnrollStudentPayload {
+    userErrors: [UserError]
+    enrollmentUpdated: Boolean
   }
 
   type User {
