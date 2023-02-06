@@ -27,6 +27,7 @@ export const typeDefs = gql`
 
     courseCreate(course: CourseInput!): CoursePayload!
     courseUpdate(courseId: ID!, course: CourseInput!): CoursePayload!
+    courseDelete(courseId: ID!): CoursePayload!
 
     instructorCreate(instructor: InstructorInput!): InstructorPayload!
     instructorAssignSubjects(

@@ -261,4 +261,43 @@ export const courseResolvers = {
       }),
     };
   },
+  courseDelete: async (_: any, { id }: { id: string }, { prisma }: Context) => {
+    const errors = [];
+
+    const existingCourse = await prisma.subject.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    if (!existingCourse) {
+      const cantFindCourseError = {
+        message: "cannot find subject to delete",
+      };
+      errors.push(cantFindCourseError);
+    }
+
+    //unenroll any students from course
+    await prisma.enrollment.deleteMany({
+      where: {
+        courseId: Number(id),
+      },
+    });
+
+    if (errors.length) {
+      return {
+        userErrors: errors,
+        course: null,
+      };
+    }
+
+    return {
+      userErrors: [],
+      course: await prisma.course.delete({
+        where: {
+          id: Number(id),
+        },
+      }),
+    };
+  },
 };
