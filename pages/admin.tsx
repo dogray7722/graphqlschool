@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Head from "next/head";
 import ClientOnly from "@/components/ClientOnly";
 import CourseManager from "@/components/CourseManager";
+import CourseStepper from "@/components/CourseStepper";
 
 const Admin = () => {
   return (
@@ -15,7 +16,7 @@ const Admin = () => {
             Manage Courses
           </h1>
           <ClientOnly>
-            <CourseManager />
+            <CourseStepper />
           </ClientOnly>
         </div>
       </main>
