@@ -1,4 +1,4 @@
-import { Subject } from ".prisma/client";
+import { Subject } from "@prisma/client";
 import { Context } from "../..";
 
 interface SubjectArgs {
