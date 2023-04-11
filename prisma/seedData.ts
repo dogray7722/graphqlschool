@@ -14,3 +14,34 @@ export const upcomingSemesters = [
   { season: SEASON.FALL, year: nextYear, seasonCode: 2 },
   { season: SEASON.WINTER, year: nextYear, seasonCode: 3 },
 ];
+
+export const instructorAddresses = [
+  {
+    streetNumber: 1134,
+    street: "W K Street",
+    city: "Denver",
+    state: "CO",
+    zipCode: 80206,
+  },
+  {
+    streetNumber: 2131,
+    street: "N J Street",
+    city: "Denver",
+    state: "CO",
+    zipCode: 80205,
+  },
+  {
+    streetNumber: 4431,
+    street: "E Q Street",
+    city: "Denver",
+    state: "CO",
+    zipCode: 80202,
+  },
+  {
+    streetNumber: 2838,
+    street: "S T Street",
+    city: "Denver",
+    state: "CO",
+    zipCode: 80208,
+  },
+];
