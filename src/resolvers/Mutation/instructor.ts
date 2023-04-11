@@ -1,4 +1,4 @@
-import { Instructor, prisma, Prisma } from "@prisma/client";
+import { Instructor, Prisma } from "@prisma/client";
 import { Context } from "../..";
 
 interface InstructorArgs {

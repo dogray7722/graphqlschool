@@ -1,5 +1,3 @@
-import { Context } from "../..";
-
 import { subjectResolvers } from "./subject";
 import { courseResolvers } from "./course";
 import { addressResolvers } from "./address";
