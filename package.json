@@ -2,6 +2,9 @@
   "name": "wed_jan_25",
   "version": "1.0.0",
   "description": "",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
