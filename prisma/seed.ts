@@ -20,6 +20,7 @@ async function main() {
     data: upcomingSemesters,
   });
   console.log(newSubject);
+  console.log("working yet?");
 }
 main()
   .then(async () => {
