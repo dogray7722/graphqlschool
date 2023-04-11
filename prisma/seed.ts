@@ -20,6 +20,7 @@ async function main() {
     data: upcomingSemesters,
   });
   console.log(newSubject);
+  console.log("one last check");
 }
 main()
   .then(async () => {
