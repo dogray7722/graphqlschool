@@ -45,3 +45,26 @@ export const instructorAddresses = [
     zipCode: 80208,
   },
 ];
+
+export const instructorData = [
+  {
+    firstName: "Fancois",
+    lastName: "Devereaux",
+    addressId: 1,
+  },
+  {
+    firstName: "Giuseppe",
+    lastName: "Bartolo",
+    addressId: 2,
+  },
+  {
+    firstName: "Kei",
+    lastName: "Watanabe",
+    addressId: 3,
+  },
+  {
+    firstName: "Diego",
+    lastName: "Rodriguez",
+    addressId: 4,
+  },
+];
