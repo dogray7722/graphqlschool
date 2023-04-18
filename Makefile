@@ -1,16 +1,19 @@
 build:
 		docker-compose up --build -d
 
-migrate:
-		docker-compose exec -it graphql npx prisma migrate deploy --force
+createdb:
+		docker-compose exec -it postgres createdb --username=root testdb
 
 down:
 		docker-compose down
 
-createdb:
-	docker-compose exec -it postgres createdb --username=root testdb
+dropdb:
+		docker-compose exec -it postgres dropdb testdb
 
-killdb:
-	docker-compose exec -it postgres dropdb testdb
+migrate:
+		docker-compose exec -it graphql npx prisma migrate deploy
 
-.PHONY: build migrate down killdb
+seed:
+		docker-compose exec -it graphql npx prisma db seed
+
+.PHONY: build createdb down dropdb migrate seed
