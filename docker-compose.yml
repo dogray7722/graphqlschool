@@ -3,8 +3,6 @@ version: "3"
 services:
   postgres:
     image: postgres:15-alpine
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -17,3 +15,8 @@ services:
       - postgres
     ports:
       - "4000:4000"
+
+  nextjs:
+    build: ./frontend
+    ports:
+      - "3000:3000"
