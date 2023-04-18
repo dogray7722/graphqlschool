@@ -1,14 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 import {
-  upcomingSemesters,
-  instructorAddresses,
+  semesterData,
+  addressData,
   instructorData,
+  subjectData,
 } from "./seedData";
 const prisma = new PrismaClient();
 
 async function seed() {
   try {
-    const addresses = instructorAddresses.map((address) => ({
+    const addresses = addressData.map((address) => ({
       streetNumber: address.streetNumber,
       street: address.street,
       city: address.city,
@@ -16,7 +17,7 @@ async function seed() {
       zipCode: address.zipCode,
     }));
 
-    const semesters = upcomingSemesters.map((semester) => ({
+    const semesters = semesterData.map((semester) => ({
       season: semester.season,
       year: semester.year,
       seasonCode: semester.seasonCode,
@@ -28,6 +29,10 @@ async function seed() {
       addressId: instructor.addressId,
     }));
 
+    const subjects = subjectData.map((subject) => ({
+      name: subject.name,
+    }));
+
     const results = await Promise.all([
       prisma.semester.createMany({
         data: semesters,
@@ -37,6 +42,9 @@ async function seed() {
       }),
       prisma.instructor.createMany({
         data: instructors,
+      }),
+      prisma.subject.createMany({
+        data: subjects,
       }),
     ]);
     console.log(`Seeding successful: ${JSON.stringify(results)}`);

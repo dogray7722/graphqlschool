@@ -4,7 +4,7 @@ const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const nextYear = currentDate.getFullYear() + 1;
 
-export const upcomingSemesters = [
+export const semesterData = [
   { season: SEASON.SPRING, year: currentYear, seasonCode: 0 },
   { season: SEASON.SUMMER, year: currentYear, seasonCode: 1 },
   { season: SEASON.FALL, year: currentYear, seasonCode: 2 },
@@ -15,7 +15,7 @@ export const upcomingSemesters = [
   { season: SEASON.WINTER, year: nextYear, seasonCode: 3 },
 ];
 
-export const instructorAddresses = [
+export const addressData = [
   {
     streetNumber: 1134,
     street: "W K Street",
@@ -66,5 +66,26 @@ export const instructorData = [
     firstName: "Diego",
     lastName: "Rodriguez",
     addressId: 4,
+  },
+];
+
+export const subjectData = [
+  {
+    name: "Culinary Foundations",
+  },
+  {
+    name: "Baking and Pasty",
+  },
+  {
+    name: "Meat Fabrication",
+  },
+  {
+    name: "Garde Manger",
+  },
+  {
+    name: "Beverages",
+  },
+  {
+    name: "Culinary Entrepreneurship",
   },
 ];
