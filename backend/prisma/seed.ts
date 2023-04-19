@@ -31,6 +31,8 @@ const subjects = subjectData.map((subject) => ({
   name: subject.name,
 }));
 
+const seq = "Semester_id_seq";
+
 const seed = async () => {
   try {
     await prisma.semester.deleteMany();
@@ -45,17 +47,17 @@ const seed = async () => {
     await prisma.subject.deleteMany();
     console.log("Deleted subject data.");
 
-    await prisma.$queryRaw`ALTER SEQUENCE Semester_id_seq RESTART WITH 1`;
-    console.log("reset semester auto increment to 1");
+    await prisma.$queryRaw`ALTER SEQUENCE "Semester_id_seq" RESTART WITH 1`;
+    console.log("Reset semester auto increment to 1");
 
-    await prisma.$queryRaw`ALTER SEQUENCE Address_id_seq RESTART WITH 1`;
-    console.log("reset address auto increment to 1");
+    await prisma.$queryRaw`ALTER SEQUENCE "Address_id_seq" RESTART WITH 1`;
+    console.log("Reset address auto increment to 1");
 
-    await prisma.$queryRaw`ALTER SEQUENCE Instructor_id_seq RESTART WITH 1`;
-    console.log("reset instructor auto increment to 1");
+    await prisma.$queryRaw`ALTER SEQUENCE "Instructor_id_seq" RESTART WITH 1`;
+    console.log("Reset instructor auto increment to 1");
 
-    await prisma.$queryRaw`ALTER SEQUENCE Subject_id_seq RESTART WITH 1`;
-    console.log("reset subject auto increment to 1");
+    await prisma.$queryRaw`ALTER SEQUENCE "Subject_id_seq" RESTART WITH 1`;
+    console.log("Reset subject auto increment to 1");
 
     await prisma.semester.createMany({
       data: semesters,

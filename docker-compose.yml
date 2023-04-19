@@ -2,10 +2,14 @@ version: "3"
 
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:15
+    restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_MAX_CONNECTIONS: 200
+    networks:
+      - my-network
     ports:
       - "5432:5432"
 
@@ -13,10 +17,17 @@ services:
     build: ./backend
     depends_on:
       - postgres
+    networks:
+      - my-network
     ports:
       - "4000:4000"
 
   nextjs:
     build: ./frontend
+    networks:
+      - my-network
     ports:
       - "3000:3000"
+
+networks:
+  my-network:
