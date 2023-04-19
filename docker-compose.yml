@@ -8,6 +8,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_MAX_CONNECTIONS: 200
+    volumes:
+      - db-data:/var/lib/postgresql/data
     networks:
       - my-network
     ports:
@@ -29,5 +31,9 @@ services:
     ports:
       - "3000:3000"
 
+volumes:
+  db-data:
+
 networks:
   my-network:
+    driver: bridge
