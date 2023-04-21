@@ -1,14 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../images/logo.png";
-import { useState } from "react";
+import { useContext } from "react";
+import { SideMenuContext } from "./Layout";
 
 const Header = () => {
-  const [sideMenu, setSideMenu] = useState(false);
-
-  let handleOpen = () => {
-    setSideMenu(!sideMenu);
-  };
+  const { sideMenuOpen, toggleMenu } = useContext(SideMenuContext);
 
   return (
     <section id="hero">
@@ -56,27 +53,27 @@ const Header = () => {
           {/* Hamburger Button */}
           <div className="md:hidden">
             <button
-              onClick={handleOpen}
+              onClick={toggleMenu}
               id="menu-btn"
               type="button"
               className={
                 "z-40 block hamburger md:hidden focus:outline-none " +
-                (sideMenu && "open")
+                (sideMenuOpen && "open")
               }
             >
               <span
                 className={
-                  "hamburger-top " + (sideMenu ? "bg-white" : "bg-black")
+                  "hamburger-top " + (sideMenuOpen ? "bg-white" : "bg-black")
                 }
               ></span>
               <span
                 className={
-                  "hamburger-middle " + (sideMenu ? "bg-white" : "bg-black")
+                  "hamburger-middle " + (sideMenuOpen ? "bg-white" : "bg-black")
                 }
               ></span>
               <span
                 className={
-                  "hamburger-bottom " + (sideMenu ? "bg-white" : "bg-black")
+                  "hamburger-bottom " + (sideMenuOpen ? "bg-white" : "bg-black")
                 }
               ></span>
             </button>
@@ -87,7 +84,7 @@ const Header = () => {
           id="menu"
           className={
             "absolute top-0 bottom-0 left-0 flex flex-col self-end w-full min-h-screen py-1 pt-40 pl-12 space-y-3 text-lg text-white uppercase bg-black " +
-            (!sideMenu && "hidden")
+            (!sideMenuOpen && "hidden")
           }
         >
           <a href="" className="hover:text-blue-600">

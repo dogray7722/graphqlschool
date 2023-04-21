@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TiTick } from "react-icons/ti";
+import { SideMenuContext } from "./Layout";
 
 const CourseStepper = () => {
+  const { sideMenuOpen } = useContext(SideMenuContext);
+
   const steps = ["Basic Info", "Class Times", "Details"];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
@@ -16,7 +19,7 @@ const CourseStepper = () => {
   };
 
   return (
-    <>
+    <div className={sideMenuOpen && "hidden"}>
       <div className="flex flex-col items-center font-kanit">
         <div className="flex justify-between">
           {steps?.map((step, i) => (
@@ -27,7 +30,7 @@ const CourseStepper = () => {
               }`}
             >
               <div className="step">
-                {i + 1 < currentStep || complete ? i + 1 : <TiTick size={24} />}
+                {i + 1 < currentStep || complete ? <TiTick size={24} /> : i + 1}
               </div>
               <p className="text-gray-800">{step}</p>
             </div>
@@ -37,7 +40,7 @@ const CourseStepper = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="md:container flex flex-col items-center bg-neutral-100 font-kanit mt-8 pt-8 border md:rounded-2xl md:shadow-xl md:w-1/2 md:mx-auto"
+        className="flex flex-col items-center bg-neutral-100 font-kanit mt-8 pt-8 border md:container md:rounded-2xl md:shadow-xl md:w-1/2 md:mx-auto"
       >
         {currentStep === 1 && (
           <div className="space-y-6 text-xl p-6 w-1/2">
@@ -186,7 +189,7 @@ const CourseStepper = () => {
         )}
 
         <div>
-          <div className="flex flex-col md:ml-0 md:flex-row md:justify-center mt-10 mb-8">
+          <div className="flex flex-col mt-10 mb-8">
             <button
               className="px-8 py-3 text-xl w-36 rounded-md text-white bg-blue-600"
               onClick={() => {
@@ -200,7 +203,7 @@ const CourseStepper = () => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 export default CourseStepper;
