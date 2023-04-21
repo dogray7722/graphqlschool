@@ -66,7 +66,7 @@ const CourseStepper = () => {
           </div>
         )}
         {currentStep === 2 && (
-          <div className="flex flex-col space-y-6 ml-28 text-xl p-6">
+          <div className="space-y-6 text-xl p-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-12">
             <div>
               <label htmlFor="semester" className="course-manager-labels">
                 Semester
@@ -74,7 +74,7 @@ const CourseStepper = () => {
               <select
                 id="semester"
                 name="semester"
-                className="rounded mt-2 shadow-slate-400 shadow-sm font-manrope"
+                className="rounded mt-1 shadow-slate-400 shadow-sm font-manrope w-full"
               >
                 <option value="Fall">Fall</option>
                 <option value="Spring">Spring</option>
@@ -90,7 +90,7 @@ const CourseStepper = () => {
                 type="date"
                 name="startDate"
                 id="startDate"
-                className="w-1/2 mt-2 rounded shadow-slate-400 shadow-sm font-manrope"
+                className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
               />
             </div>
             <div>
@@ -101,7 +101,7 @@ const CourseStepper = () => {
                 type="date"
                 name="endDate"
                 id="endDate"
-                className="form-input w-1/2 mt-2 rounded shadow-slate-400 shadow-sm font-manrope"
+                className="form-input w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
               />
             </div>
             <div>
@@ -112,7 +112,7 @@ const CourseStepper = () => {
                 type="text"
                 id="startTime"
                 name="startTime"
-                className="form-input w-1/2 mt-2 rounded shadow-slate-400 shadow-sm font-manrope"
+                className="form-input w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
               />
             </div>
             <div>
@@ -123,7 +123,7 @@ const CourseStepper = () => {
                 name="courseDays"
                 id="courseDays"
                 multiple="multiple"
-                className="block w-1/2 h-48 rounded mt-2 font-manrope"
+                className="block w-full h-48 rounded mt-1 font-manrope"
               >
                 <option value="sunday">Sunday</option>
                 <option value="monday">Monday</option>
@@ -137,7 +137,7 @@ const CourseStepper = () => {
           </div>
         )}
         {currentStep === 3 && (
-          <div className="flex flex-col space-y-6 ml-28 text-xl p-6">
+          <div className="space-y-6 text-xl p-6 w-1/2">
             <div>
               <label htmlFor="subject" className="course-manager-labels">
                 Subject
@@ -145,7 +145,7 @@ const CourseStepper = () => {
               <select
                 id="subject"
                 name="subject"
-                className="w-1/2 mt-2 rounded shadow-slate-400 shadow-sm font-manrope"
+                className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
               >
                 <option value="1">Health and Safety</option>
                 <option value="2">Business</option>
@@ -160,7 +160,7 @@ const CourseStepper = () => {
               <select
                 id="instructor"
                 name="instructor"
-                className="w-1/2 mt-2 rounded shadow-slate-400 shadow-sm font-manrope"
+                className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
               >
                 <option value="1">Fancois Devereaux</option>
                 <option value="2">Giuseppe Bartolo</option>
@@ -179,7 +179,7 @@ const CourseStepper = () => {
                 min="0"
                 steps="1"
                 placeholder="0"
-                className="font-manrope w-1/4"
+                className="font-manrope mt-1 rounded w-1/4 shadow-slate-400 shadow-sm"
               />
             </div>
           </div>
