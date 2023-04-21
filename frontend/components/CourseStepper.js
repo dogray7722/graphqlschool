@@ -34,9 +34,13 @@ const CourseStepper = () => {
           ))}
         </div>
       </div>
-      <section className="bg-neutral-100 font-kanit mt-8 pt-10 pb-6 md:mx-20 md:border md:rounded-2xl md:shadow-xl">
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-col space-y-6 ml-28 text-xl md:grid md:grid-cols-2 md:gap-3 md:text-2xl md:space-y-2">
+
+      <form
+        onSubmit={handleSubmit}
+        className="md:container flex flex-col items-center bg-neutral-100 font-kanit mt-8 pt-8 border md:rounded-2xl md:shadow-xl mx-auto"
+      >
+        {currentStep === 1 && (
+          <div className="space-y-6 text-xl p-6 w-3/4">
             <div>
               <label htmlFor="name" className="course-manager-labels">
                 Name
@@ -45,7 +49,7 @@ const CourseStepper = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="rounded w-3/4 mt-2 shadow-slate-400 shadow-sm"
+                className="rounded mt-2 shadow-slate-400 shadow-sm w-full"
               />
             </div>
             <div>
@@ -56,9 +60,13 @@ const CourseStepper = () => {
                 type="textarea"
                 id="description"
                 name="description"
-                className="form-input w-3/4 rounded mt-2 shadow-slate-400 shadow-sm"
+                className="form-input rounded mt-2 shadow-slate-400 shadow-sm w-full"
               ></textarea>
             </div>
+          </div>
+        )}
+        {currentStep === 2 && (
+          <div className="flex flex-col space-y-6 ml-28 text-xl p-6">
             <div>
               <label htmlFor="semester" className="course-manager-labels">
                 Semester
@@ -126,6 +134,10 @@ const CourseStepper = () => {
                 <option value="saturday">Saturday</option>
               </select>
             </div>
+          </div>
+        )}
+        {currentStep === 3 && (
+          <div className="flex flex-col space-y-6 ml-28 text-xl p-6">
             <div>
               <label htmlFor="subject" className="course-manager-labels">
                 Subject
@@ -171,22 +183,23 @@ const CourseStepper = () => {
               />
             </div>
           </div>
-          <div>
-            <div className="flex flex-col ml-28 md:ml-0 md:flex-row md:justify-center mt-10 md:mt-20 mb-8">
-              <button
-                className="px-8 py-3 text-xl w-40 rounded-md text-white bg-blue-600"
-                onClick={() => {
-                  currentStep === steps.length
-                    ? setComplete(true)
-                    : setCurrentStep((prev) => prev + 1);
-                }}
-              >
-                {currentStep === steps.length ? "Finish" : "Next"}
-              </button>
-            </div>
+        )}
+
+        <div>
+          <div className="flex flex-col md:ml-0 md:flex-row md:justify-center mt-10 mb-8">
+            <button
+              className="px-8 py-3 text-xl w-36 rounded-md text-white bg-blue-600"
+              onClick={() => {
+                currentStep === steps.length
+                  ? setComplete(true)
+                  : setCurrentStep((prev) => prev + 1);
+              }}
+            >
+              {currentStep === steps.length ? "Finish" : "Next"}
+            </button>
           </div>
-        </form>
-      </section>
+        </div>
+      </form>
     </>
   );
 };
