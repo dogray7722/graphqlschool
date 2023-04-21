@@ -52,7 +52,7 @@ const CourseStepper = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="rounded mt-1 shadow-slate-400 shadow-sm w-full"
+                className="rounded mt-1 shadow-slate-400 shadow-sm w-full font-manrope"
               />
             </div>
             <div>
@@ -63,7 +63,7 @@ const CourseStepper = () => {
                 type="textarea"
                 id="description"
                 name="description"
-                className="rounded mt-1 shadow-slate-400 shadow-sm w-full"
+                className="rounded mt-1 shadow-slate-400 shadow-sm w-full font-manrope"
               ></textarea>
             </div>
           </div>
@@ -188,19 +188,29 @@ const CourseStepper = () => {
           </div>
         )}
 
-        <div>
-          <div className="flex flex-col mt-10 mb-8">
+        <div className="flex space-x-8 mt-10 mb-8  ">
+          {currentStep > 1 && (
             <button
-              className="px-8 py-3 text-xl w-36 rounded-md text-white bg-blue-600"
+              className="text-xl w-30 px-6 py-2 rounded-md text-white bg-slate-500"
               onClick={() => {
-                currentStep === steps.length
-                  ? setComplete(true)
-                  : setCurrentStep((prev) => prev + 1);
+                setCurrentStep((prev) => prev - 1);
+                setComplete(false);
               }}
             >
-              {currentStep === steps.length ? "Finish" : "Next"}
+              Back
             </button>
-          </div>
+          )}
+
+          <button
+            className="text-xl w-30 px-6 py-2 rounded-md text-white bg-blue-600"
+            onClick={() => {
+              currentStep === steps.length
+                ? setComplete(true)
+                : setCurrentStep((prev) => prev + 1);
+            }}
+          >
+            {currentStep === steps.length ? "Finish" : "Next"}
+          </button>
         </div>
       </form>
     </div>
