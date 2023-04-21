@@ -37,10 +37,10 @@ const CourseStepper = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="md:container flex flex-col items-center bg-neutral-100 font-kanit mt-8 pt-8 border md:rounded-2xl md:shadow-xl mx-auto"
+        className="md:container flex flex-col items-center bg-neutral-100 font-kanit mt-8 pt-8 border md:rounded-2xl md:shadow-xl md:w-1/2 md:mx-auto"
       >
         {currentStep === 1 && (
-          <div className="space-y-6 text-xl p-6 w-3/4">
+          <div className="space-y-6 text-xl p-6 w-1/2">
             <div>
               <label htmlFor="name" className="course-manager-labels">
                 Name
@@ -49,7 +49,7 @@ const CourseStepper = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="rounded mt-2 shadow-slate-400 shadow-sm w-full"
+                className="rounded mt-1 shadow-slate-400 shadow-sm w-full"
               />
             </div>
             <div>
@@ -60,7 +60,7 @@ const CourseStepper = () => {
                 type="textarea"
                 id="description"
                 name="description"
-                className="form-input rounded mt-2 shadow-slate-400 shadow-sm w-full"
+                className="rounded mt-1 shadow-slate-400 shadow-sm w-full"
               ></textarea>
             </div>
           </div>
