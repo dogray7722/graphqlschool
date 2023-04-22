@@ -1,25 +1,43 @@
 import { useState, useContext } from "react";
 import { TiTick } from "react-icons/ti";
 import { SideMenuContext } from "./Layout";
+import { useRouter } from "next/router";
 
 const CourseStepper = () => {
+  const router = useRouter();
   const { sideMenuOpen } = useContext(SideMenuContext);
 
   const steps = ["Basic Info", "Class Times", "Details"];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
 
+  const [formState, setFormState] = useState({
+    name: "",
+    description: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addCourse({ variables: { name, description } }).then((res) => {
-    //   console.log(res.data.addCourse);
-    //   setName("");
-    //   setDescription("");
-    // });
+    router.push(
+      {
+        pathname: "/admin",
+        query: formState,
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
-    <div className={sideMenuOpen && "hidden"}>
+    <section className={sideMenuOpen ? "hidden" : undefined}>
       <div className="flex flex-col items-center font-kanit">
         <div className="flex justify-between">
           {steps?.map((step, i) => (
@@ -53,6 +71,8 @@ const CourseStepper = () => {
                 id="name"
                 name="name"
                 className="rounded mt-1 shadow-slate-400 shadow-sm w-full font-manrope"
+                value={formState.name}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -64,6 +84,8 @@ const CourseStepper = () => {
                 id="description"
                 name="description"
                 className="rounded mt-1 shadow-slate-400 shadow-sm w-full font-manrope"
+                value={formState.description}
+                onChange={handleChange}
               ></textarea>
             </div>
           </div>
@@ -78,6 +100,8 @@ const CourseStepper = () => {
                 id="semester"
                 name="semester"
                 className="rounded mt-1 shadow-slate-400 shadow-sm font-manrope w-full"
+                // value={formData.semesterId}
+                // onChange={handleChange}
               >
                 <option value="Fall">Fall</option>
                 <option value="Spring">Spring</option>
@@ -94,6 +118,8 @@ const CourseStepper = () => {
                 name="startDate"
                 id="startDate"
                 className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
+                // value={formData.startDate}
+                // onChange={handleChange}
               />
             </div>
             <div>
@@ -105,6 +131,8 @@ const CourseStepper = () => {
                 name="endDate"
                 id="endDate"
                 className="form-input w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
+                // value={formData.endDate}
+                // onChange={handleChange}
               />
             </div>
             <div>
@@ -116,6 +144,8 @@ const CourseStepper = () => {
                 id="startTime"
                 name="startTime"
                 className="form-input w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
+                // value={formData.startTime}
+                // onChange={handleChange}
               />
             </div>
             <div>
@@ -127,6 +157,8 @@ const CourseStepper = () => {
                 id="courseDays"
                 multiple="multiple"
                 className="block w-full h-48 rounded mt-1 font-manrope"
+                // value={formData.courseDays}
+                // onChange={handleChange}
               >
                 <option value="sunday">Sunday</option>
                 <option value="monday">Monday</option>
@@ -149,6 +181,8 @@ const CourseStepper = () => {
                 id="subject"
                 name="subject"
                 className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
+                // value={formData.subjectId}
+                // onChange={handleChange}
               >
                 <option value="1">Health and Safety</option>
                 <option value="2">Business</option>
@@ -164,6 +198,8 @@ const CourseStepper = () => {
                 id="instructor"
                 name="instructor"
                 className="w-full mt-1 rounded shadow-slate-400 shadow-sm font-manrope"
+                // value={formData.InstructorId}
+                // onChange={handleChange}
               >
                 <option value="1">Fancois Devereaux</option>
                 <option value="2">Giuseppe Bartolo</option>
@@ -183,6 +219,8 @@ const CourseStepper = () => {
                 steps="1"
                 placeholder="0"
                 className="font-manrope mt-1 rounded w-1/4 shadow-slate-400 shadow-sm"
+                // value={formData.seats}
+                // onChange={handleChange}
               />
             </div>
           </div>
@@ -213,7 +251,7 @@ const CourseStepper = () => {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 export default CourseStepper;

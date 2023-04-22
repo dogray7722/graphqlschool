@@ -20,31 +20,31 @@ const Header = () => {
           />
           <div className="hidden h-10 md:flex md:space-x-8">
             <div className="group">
-              <Link href="#" className="nav-links">
+              <Link href="#/about" className="nav-links">
                 About
               </Link>
               <div className="mx-2 group-hover:border-b group-hover:border-green-700"></div>
             </div>
             <div className="group">
-              <Link href="#" className="nav-links">
+              <Link href="#/register" className="nav-links">
                 Register
               </Link>
               <div className="mx-2 group-hover:border-b group-hover:border-green-700"></div>
             </div>
             <div className="group">
-              <Link href="#" className="nav-links">
+              <Link href="#/courses" className="nav-links">
                 Courses
               </Link>
               <div className="mx-2 group-hover:border-b group-hover:border-green-700"></div>
             </div>
             <div className="group">
-              <Link href="#" className="nav-links">
+              <Link href="#/calendar" className="nav-links">
                 Calendar
               </Link>
               <div className="mx-2 group-hover:border-b group-hover:border-green-700"></div>
             </div>
             <div className="group">
-              <Link href="#" className="text-xl text-slate-100">
+              <Link href="#/contact" className="text-xl text-slate-100">
                 Contact Us
               </Link>
               <div className="mx-2 group-hover:border-b group-hover:border-green-700"></div>
@@ -87,19 +87,19 @@ const Header = () => {
             (!sideMenuOpen && "hidden")
           }
         >
-          <a href="" className="hover:text-blue-600">
+          <a href="#/about" className="hover:text-blue-600">
             About
           </a>
-          <a href="" className="hover:text-blue-600">
+          <a href="#/register" className="hover:text-blue-600">
             Register
           </a>
-          <a href="" className="hover:text-blue-600">
+          <a href="#/courses" className="hover:text-blue-600">
             Courses
           </a>
-          <a href="" className="hover:text-blue-600">
+          <a href="#/calendar" className="hover:text-blue-600">
             Calendar
           </a>
-          <a href="" className="hover:text-blue-600">
+          <a href="#/contact" className="hover:text-blue-600">
             Contact Us
           </a>
         </div>
