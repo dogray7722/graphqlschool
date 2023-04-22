@@ -4,7 +4,7 @@ import ClientOnly from "@/components/ClientOnly";
 import CourseManager from "@/components/CourseManager";
 import CourseStepper from "@/components/CourseStepper";
 
-const Admin = () => {
+export default function Admin() {
   return (
     <Layout>
       <Head>
@@ -22,5 +22,4 @@ const Admin = () => {
       </main>
     </Layout>
   );
-};
-export default Admin;
+}

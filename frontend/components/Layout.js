@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export const SideMenuContext = React.createContext();
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   const [sideMenuOpen, setSideMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,5 +19,4 @@ const Layout = ({ children }) => {
       <Footer />
     </SideMenuContext.Provider>
   );
-};
-export default Layout;
+}

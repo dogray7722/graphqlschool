@@ -17,7 +17,7 @@ const QUERY = gql`
   }
 `;
 
-const Courses = () => {
+export default function Courses() {
   const { data, loading, error } = useQuery(QUERY);
 
   if (loading) {
@@ -49,5 +49,4 @@ const Courses = () => {
       ))}
     </section>
   );
-};
-export default Courses;
+}

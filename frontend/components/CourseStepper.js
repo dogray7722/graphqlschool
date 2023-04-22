@@ -3,7 +3,7 @@ import { TiTick } from "react-icons/ti";
 import { SideMenuContext } from "./Layout";
 import { useRouter } from "next/router";
 
-const CourseStepper = () => {
+export default function CourseStepper() {
   const router = useRouter();
   const { sideMenuOpen } = useContext(SideMenuContext);
 
@@ -253,5 +253,4 @@ const CourseStepper = () => {
       </form>
     </section>
   );
-};
-export default CourseStepper;
+}

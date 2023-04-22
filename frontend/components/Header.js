@@ -4,7 +4,7 @@ import Logo from "../images/logo.png";
 import { useContext } from "react";
 import { SideMenuContext } from "./Layout";
 
-const Header = () => {
+export default function Header() {
   const { sideMenuOpen, toggleMenu } = useContext(SideMenuContext);
 
   return (
@@ -106,6 +106,4 @@ const Header = () => {
       </div>
     </section>
   );
-};
-
-export default Header;
+}
