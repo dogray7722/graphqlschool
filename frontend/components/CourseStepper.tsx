@@ -1,6 +1,17 @@
 import { useState, useContext } from "react";
 import { TiTick } from "react-icons/ti";
 import { SideMenuContext } from "./Layout";
+import { gql, useQuery } from "@apollo/client";
+
+const SEMESTER_QUERY = gql`
+  query semesters($futureOnly: Boolean) {
+    semesters(futureOnly: $futureOnly) {
+      id
+      season
+      year
+    }
+  }
+`;
 
 export default function CourseStepper() {
   const { sideMenuOpen } = useContext(SideMenuContext);
@@ -13,6 +24,21 @@ export default function CourseStepper() {
     name: "",
     description: "",
   });
+
+  const { data, loading, error } = useQuery(SEMESTER_QUERY, {
+    variables: { futureOnly: true },
+  });
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  const semesters = data.semesters;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,12 +120,13 @@ export default function CourseStepper() {
                 name="semester"
                 className="rounded mt-1 shadow-slate-400 shadow-sm font-manrope w-full"
                 // value={formData.semesterId}
-                // onChange={handleChange}
+                onChange={handleChange}
               >
-                <option value="Fall">Fall</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Winter">Winter</option>
+                {semesters.map((semester) => (
+                  <option key={semester.id} value={semester.id}>
+                    {`${semester.season} ${semester.year}`}
+                  </option>
+                ))}
               </select>
             </div>
             <div>
