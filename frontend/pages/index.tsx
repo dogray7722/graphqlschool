@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
-import ClientOnly from "../components/ClientOnly";
+import ClientOnly from "@/components/ClientOnly";
 import Courses from "../components/Courses";
 
 export default function Home() {

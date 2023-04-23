@@ -80,7 +80,6 @@ export default function CourseStepper() {
                 Description
               </label>
               <textarea
-                type="textarea"
                 id="description"
                 name="description"
                 className="rounded mt-1 shadow-slate-400 shadow-sm w-full font-manrope"
@@ -155,7 +154,7 @@ export default function CourseStepper() {
               <select
                 name="courseDays"
                 id="courseDays"
-                multiple="multiple"
+                multiple
                 className="block w-full h-48 rounded mt-1 font-manrope"
                 // value={formData.courseDays}
                 // onChange={handleChange}
@@ -216,7 +215,7 @@ export default function CourseStepper() {
                 name="seats"
                 id="seats"
                 min="0"
-                steps="1"
+                step="1"
                 placeholder="0"
                 className="font-manrope mt-1 rounded w-1/4 shadow-slate-400 shadow-sm"
                 // value={formData.seats}
@@ -240,6 +239,7 @@ export default function CourseStepper() {
           )}
 
           <button
+            type="submit"
             className="text-xl w-30 px-6 py-2 rounded-md text-white bg-blue-600"
             onClick={() => {
               currentStep === steps.length

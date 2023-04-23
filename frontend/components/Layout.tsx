@@ -1,8 +1,11 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 
-export const SideMenuContext = React.createContext();
+export const SideMenuContext = createContext({
+  sideMenuOpen: false,
+  toggleMenu: () => {},
+});
 
 export default function Layout({ children }) {
   const [sideMenuOpen, setSideMenuOpen] = useState(false);

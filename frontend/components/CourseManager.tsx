@@ -66,7 +66,7 @@ const CourseManager = () => {
               Description
             </label>
             <textarea
-              type="textarea"
+              rows={4}
               id="description"
               name="description"
               className="form-input w-3/4 rounded mt-2 shadow-slate-400 shadow-sm"
@@ -127,7 +127,7 @@ const CourseManager = () => {
             <select
               name="courseDays"
               id="courseDays"
-              multiple="multiple"
+              multiple
               className="block w-1/2 h-48 rounded mt-2 font-manrope"
             >
               <option value="sunday">Sunday</option>
@@ -178,7 +178,7 @@ const CourseManager = () => {
               name="seats"
               id="seats"
               min="0"
-              steps="1"
+              step="1"
               placeholder="0"
               className="font-manrope w-1/4"
             />
