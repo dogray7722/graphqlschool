@@ -1,10 +1,8 @@
 import { useState, useContext } from "react";
 import { TiTick } from "react-icons/ti";
 import { SideMenuContext } from "./Layout";
-import { useRouter } from "next/router";
 
 export default function CourseStepper() {
-  const router = useRouter();
   const { sideMenuOpen } = useContext(SideMenuContext);
 
   const steps = ["Basic Info", "Class Times", "Details"];
@@ -26,14 +24,10 @@ export default function CourseStepper() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(
-      {
-        pathname: "/admin",
-        query: formState,
-      },
-      undefined,
-      { shallow: true }
-    );
+    if (currentStep === steps.length && complete) {
+      console.log("form state", formState);
+      console.log("submit now!");
+    }
   };
 
   return (
